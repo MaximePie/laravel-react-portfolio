@@ -6,7 +6,19 @@ import { createBrowserHistory } from 'history';
 import Navbar from "./molecules/Navbar";
 
 export default function Home() {
+
+
+  const viewportWidth = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+  const [isMobile, setMobileStatus] = React.useState(viewportWidth < 1000);
+
+  window.onresize = () => {
+    const viewportWidth = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+    setMobileStatus(viewportWidth < 1000)
+  };
+
+
   return (
+    <viewportContext.Provider value={isMobile}>
     <div className="Home">
       <BrowserRouter history={createBrowserHistory}>
         <Navbar/>
@@ -27,6 +39,7 @@ export default function Home() {
         </Switch>
       </BrowserRouter>
     </div>
+    </viewportContext.Provider>
   );
 }
 
