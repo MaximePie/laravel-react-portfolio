@@ -4,6 +4,7 @@ import '../../sass/base.scss';
 import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 import Navbar from "./molecules/Navbar";
+import { viewportContext } from '../../contexts/viewport'
 
 export default function Home() {
 
